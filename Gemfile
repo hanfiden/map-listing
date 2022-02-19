@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "geocoder"
 gem 'faker'
+gem 'rails-i18n', '~> 6.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
