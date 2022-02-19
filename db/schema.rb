@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_161210) do
     t.string "name"
     t.text "description"
     t.string "logo_url"
-    t.integer "mimium_purchase_amount"
+    t.integer "minimum_purchase_amount"
     t.string "delivery_time_limit"
     t.string "address_name"
     t.string "zip_code"
