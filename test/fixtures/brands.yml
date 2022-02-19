@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  logo_url: MyString
+  mimium_purchase_amount: 1
+  delivery_time_limit: MyString
+  address_name: MyString
+  zip_code: MyString
+  city_name: MyString
+  latitude: 1.5
+  longitude: 1.5
+  tags: MyString
+  category: MyString
+
+two:
+  name: MyString
+  description: MyText
+  logo_url: MyString
+  mimium_purchase_amount: 1
+  delivery_time_limit: MyString
+  address_name: MyString
+  zip_code: MyString
+  city_name: MyString
+  latitude: 1.5
+  longitude: 1.5
+  tags: MyString
+  category: MyString
