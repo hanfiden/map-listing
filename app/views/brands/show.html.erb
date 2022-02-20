@@ -1,0 +1,17 @@
+<div class="show-container">
+  <div class="show-header">
+    <div class="logo-circle">
+      <%= image_tag 'https://picsum.photos/500/300?random=#{rand(1..50)}' %>
+    </div>
+  </div>
+
+  <div class="list__item">
+    <% @products.map do |product| %>
+      <div class="product__item">
+        <p><%= product.name %></p>
+        <p><%= product.description.html_safe %></p>
+        <p><%= product.product_price %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
