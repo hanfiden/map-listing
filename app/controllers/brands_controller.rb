@@ -1,7 +1,22 @@
 class BrandsController < ApplicationController
   def index
-    @brands = Brand.all
+    check_query.present? ? set_search : @brands = Brand.all
+    set_markers
 
+    respond_to do |format|
+      format.html
+      format.json { render json: @brands }
+    end
+  end
+
+  def show
+    @brand = Brand.find(params[:id])
+    @products = Product.where(brand_id: @brand.id)
+  end
+
+  private
+
+  def set_markers
     @markers = @brands.geocoded.map do |brand|
       {
         lat: brand.latitude,
@@ -11,8 +26,11 @@ class BrandsController < ApplicationController
     end
   end
 
-  def show
-    @brand = Brand.find(params[:id])
-    @products = Product.where(brand_id: @brand.id)
+  def check_query
+    true if params[:category].present? || params[:tags].present? || params[:city_name].present?
+  end
+
+  def set_search
+    @brands = Brand.advanced_search(%i[category tags city_name], [params[:category], params[:tags], params[:city_name]])
   end
 end

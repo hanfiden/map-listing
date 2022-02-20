@@ -1,20 +1,24 @@
-<div class="grid-container">
+<div class="main-container">
   <div id="map"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  <div class="brand__infos">
-    <% @brands.map do |brand| %>
-     <div class="brand_card">
-        <%= image_tag brand.logo_url, width: 100, height: 100 %>
-        <p><%= link_to brand.name, brand_path(brand) %></p>
-        <p><%= brand.description.html_safe %></p>
-        <p><%= brand.minimum_purchase_amount %></p>
-        <p><%= brand.delivery_time_limit %></p>
-        <p><%= brand.full_address %></p>
-        <p><%= brand.tags %></p>
+  <div class="side-container">
+    <div>
+      <div class="form">
+        <%= form_tag brands_path, method: :get do %>
+          <%= select_tag(:category, options_for_select(Brand::CATEGORIES, params[:category])) %>
+
+          <%= select_tag(:tags, options_for_select(Brand::TAGS, params[:tags])) %>
+
+          <%= text_field_tag :city_name, params[:city_name] %>
+
+          <%= submit_tag "Rechercher" %>
+        <% end %>
+        <%= link_to "Réinitialiser les filtres", brands_path %>
       </div>
-    <% end %>
+      <%= render 'list', brands: @brands %>
+    </div>
   </div>
 </div>
