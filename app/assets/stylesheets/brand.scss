@@ -27,8 +27,21 @@
 }
 
 .list__item {
-  width: 70%;
-  margin: auto;
+  margin: 150px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  column-gap: 4rem;
+  text-align: center;
+
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.brand-flex {
+  display: flex;
+  margin-left: 150px;
+  margin-right: 150px;
+  justify-content: space-between;
 }

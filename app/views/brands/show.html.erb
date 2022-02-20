@@ -1,16 +1,36 @@
 <div class="show-container">
   <div class="show-header">
     <div class="logo-circle">
-      <%= image_tag 'https://picsum.photos/500/300?random=#{rand(1..50)}' %>
+      <%= image_tag @brand.logo_url %>
+    </div>
+  </div>
+
+  <div class="brand__details brand-flex">
+    <div class="show__brand-infos">
+      <h2><%= @brand.name %></h2>
+      <p class="brand__delivery"><strong><%= @brand.category %></strong></p>
+      <p class="brand__price">Commande minimum : €<%= @brand.minimum_purchase_amount %></p>
+      <p class="brand__delivery"> 🚛 Délivré sous les <%= @brand.delivery_time_limit %> jours</p>
+      <p class="brand__address">📍 <%= @brand.full_address %></p>
+      <div>
+        <% @brand.tags.map do |tag| %>
+          <span class="tag-element"><%= tag %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <p class="brand__description"><%= @brand.description.html_safe %></p>
     </div>
   </div>
 
   <div class="list__item">
     <% @products.map do |product| %>
       <div class="product__item">
-        <p><%= product.name %></p>
-        <p><%= product.description.html_safe %></p>
-        <p><%= product.product_price %></p>
+        <%= image_tag @brand.logo_url %>
+        <h4><%= product.name %></h4>
+        <p class="brand__description">Ingrédients: <%= product.description.html_safe %></p>
+        <p class="brand__price">Prix de vente public €<%= product.product_price %> TTC</p>
       </div>
     <% end %>
   </div>
