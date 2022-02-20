@@ -1,4 +1,13 @@
-<%= image_tag brand.logo_url %>
-<h2 class=""><%= brand.name %></h2>
-<p class=""><%= brand.full_address %></p>
-<p class="">Commande minimum: <%= brand.minimum_purchase_amount %>€</p>
+<div class="info-window">
+  <%= link_to brand_path(brand), target: '_blank' do %>
+    <%= image_tag brand.logo_url%>
+  <% end %>
+
+  <div class="info-window__details">
+    <%= link_to brand_path(brand), target: '_blank' do %>
+      <h4 class=""><%= brand.name %></h4>
+    <% end %>
+    <p class=""><%= brand.full_address %></p>
+    <p class="">Montant minimum: <strong><%= brand.minimum_purchase_amount %>€</strong></p>
+  </div>
+</div>
