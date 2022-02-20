@@ -1,24 +1,18 @@
-# README
+App production: <a href="https://map-listing.herokuapp.com/" target="_blank">here</a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# To start app:
 
-Things you may want to cover:
+```console
+git clone git@github.com:hanfiden/map-listing.git
+cd map-listing
+touch .env
+bundle install
+yarn install
+rails db:create
+rails db:migrate
+rails db:seed
+rails s
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Don't forget to add mapbox api key url into .env file
+MAPBOX_API_KEY=**************************
