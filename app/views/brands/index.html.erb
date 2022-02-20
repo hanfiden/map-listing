@@ -1,4 +1,9 @@
 <div class="grid-container">
+  <div id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
   <div class="brand__infos">
     <% @brands.map do |brand| %>
      <div class="brand_card">
@@ -11,10 +16,5 @@
         <p><%= brand.tags %></p>
       </div>
     <% end %>
-  </div>
-
-  <div id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
