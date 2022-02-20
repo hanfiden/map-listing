@@ -1,0 +1,34 @@
+/////////////////// BRANDS SHOW STYLE ///////////////////
+.show-container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+.show-header {
+  height: 250px;
+  background-image: url('https://picsum.photos/500/300?random=5');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 5rem;
+
+  img {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: solid 2px white;
+    left: 150px;
+    bottom: -50px;
+  }
+}
+
+.list__item {
+  width: 70%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
