@@ -1,2 +1,23 @@
 @import "mapbox-gl/dist/mapbox-gl";
 @import 'brands';
+@import 'map';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+#map{
+  width: 100%;
+  width: 50vw;
+  height: 100vh;
+  position: sticky;
+  top: 5px;
+  top: 0;
+}
