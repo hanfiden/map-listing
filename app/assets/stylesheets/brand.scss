@@ -45,3 +45,39 @@
   margin-right: 150px;
   justify-content: space-between;
 }
+
+/////////////////// MEDIA QUERIE ///////////////////
+@media screen and (max-width: 1000px) {
+  .list__item {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .brand-flex {
+    margin-right: 80px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .brand-flex {
+    flex-direction: column;
+  }
+
+  .show-description{
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .list__item {
+    grid-template-columns: 1fr;
+    margin: 50px;
+  }
+
+  .product__item {
+    margin-bottom: 50px;
+  }
+
+  .brand-flex {
+    margin-left: 50px;
+  }
+}
