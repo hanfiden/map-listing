@@ -12,11 +12,11 @@
 
           <%= select_tag(:tags, options_for_select(Brand::TAGS, params[:tags])) %>
 
-          <%= text_field_tag :city_name, params[:city_name] %>
+          <%= text_field_tag(:city_name, params[:city_name], autocomplete: 'off', placeholder: 'Ville') %>
 
           <%= submit_tag "Rechercher" %>
         <% end %>
-        <%= link_to "Réinitialiser les filtres", brands_path %>
+        <p><%= link_to "Réinitialiser les filtres", brands_path %></p>
       </div>
       <%= render 'list', brands: @brands %>
     </div>
