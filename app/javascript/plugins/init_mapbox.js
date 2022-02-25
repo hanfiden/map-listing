@@ -17,7 +17,8 @@ const initMapbox = () => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [2.209666999999996, 46.232192999999995],
-      zoom: 5
+      zoom: 5,
+      doubleClickZoom: false
     });
 
     ////////////////// OPTIONS ON THE MAP ////////////////////
