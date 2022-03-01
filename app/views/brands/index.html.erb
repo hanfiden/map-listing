@@ -5,6 +5,14 @@
   </div>
 
   <div class="side-container">
+
+  <div class="map-overlay">
+    <fieldset>
+      <input id="feature-filter" type="text" placeholder="Filter results by name">
+    </fieldset>
+    <div id="feature-listing" class="listing"></div>
+  </div>
+
     <div>
       <div class="form">
         <%= form_tag brands_path, method: :get do %>
