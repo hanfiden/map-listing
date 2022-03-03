@@ -3,10 +3,10 @@ class BrandsController < ApplicationController
     check_query.present? ? set_search : @brands = Brand.all
     set_markers
 
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @brands }
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @brands }
+    end
   end
 
   def show
@@ -21,16 +21,17 @@ class BrandsController < ApplicationController
       {
         lat: brand.latitude,
         lng: brand.longitude,
-        info_window: render_to_string(partial: 'info_window', locals: { brand: brand })
+        info_window: render_to_string(partial: 'info_window', locals: { brand: brand }),
+        info_list: render_to_string(partial: 'list', locals: { brand: brand })
       }
     end
   end
 
   def check_query
-    true if params[:category].present? || params[:tags].present? || params[:city_name].present?
+    true if params[:category].present? || params[:tags].present? || params[:city].present?
   end
 
   def set_search
-    @brands = Brand.advanced_search(%i[category tags city_name], [params[:category], params[:tags], params[:city_name]])
+    @brands = Brand.advanced_search([:category, :tags, :city], [params[:category], params[:tags], params[:city]])
   end
 end
