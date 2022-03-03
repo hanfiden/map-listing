@@ -1,30 +1,20 @@
-<div class="brand__cards">
-    <% @brands.map do |brand| %>
-      <div class="brand__card">
+<div class="brand__image">
+  <%= link_to brand_path(brand), target: '_blank' do %>
+    <%= image_tag brand.logo_url%>
+  <% end %>
+</div>
+<div class="brand__infos">
+  <div>
+    <h4><%= link_to brand.name, brand_path(brand), target: '_blank' %></h4>
+    <p class="brand__address"><%= brand.full_address %></p>
+    <p class="brand__price">Commande minimum <strong>€<%= brand.minimum_purchase_amount %></strong></p>
+    <p class="brand__delivery">Délivré sous les <strong><%= brand.delivery_time %> jours</strong></p>
+    <p class="brand__delivery"><strong><%= brand.category %></strong></p>
+  </div>
 
-        <div class="brand__image">
-          <%= link_to brand_path(brand), target: '_blank' do %>
-            <%= image_tag brand.logo_url%>
-          <% end %>
-        </div>
-
-        <div class="brand__infos">
-          <div>
-            <h4><%= link_to brand.name, brand_path(brand), target: '_blank' %></h4>
-            <p class="brand__address"><%= brand.full_address %></p>
-            <p class="brand__price">Commande minimum <strong>€<%= brand.minimum_purchase_amount %></strong></p>
-            <p class="brand__delivery">Délivré sous les <strong><%= brand.delivery_time_limit %> jours</strong></p>
-            <p class="brand__delivery"><strong><%= brand.category %></strong></p>
-          </div>
-
-          <div>
-            <% brand.tags.map do |tag| %>
-              <span class="tag-element"><%= tag %></span>
-            <% end %>
-          </div>
-
-        </div>
-      </div>
+  <div>
+    <% brand.tags.map do |tag| %>
+      <span class="tag-element"><%= tag %></span>
     <% end %>
   </div>
 </div>
