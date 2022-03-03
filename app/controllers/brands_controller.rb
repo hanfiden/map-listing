@@ -28,10 +28,10 @@ class BrandsController < ApplicationController
   end
 
   def check_query
-    true if params[:category].present? || params[:tags].present? || params[:city].present?
+    true if params[:category].present? || params[:tags].present? || params[:city_name].present?
   end
 
   def set_search
-    @brands = Brand.advanced_search([:category, :tags, :city], [params[:category], params[:tags], params[:city]])
+    @brands = Brand.advanced_search([:category, :tags, :city_name], [params[:category], params[:tags], params[:city_name]])
   end
 end
