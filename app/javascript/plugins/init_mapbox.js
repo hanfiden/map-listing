@@ -12,8 +12,6 @@ const initMapbox = () => {
   const listingEl = document.getElementById('feature-listing');
   const mapText = document.getElementById('mapText');
   const markers = JSON.parse(mapElement.dataset.markers);
-  const itemLink = document.createElement('div');
-  itemLink.className = 'brand__card';
 
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -94,6 +92,8 @@ const initMapbox = () => {
 
         if (features.length) {
           for (const feature of features) {
+            const itemLink = document.createElement('div')
+            itemLink.className = 'brand__card';
             itemLink.innerHTML = feature.properties.list;
             itemLink.addEventListener('mouseenter', () => {
               // Highlight corresponding feature on the map
@@ -144,8 +144,10 @@ const initMapbox = () => {
         });
       });
 
-      itemLink.innerHTML = marker.info_list;
-      listingEl.innerHTML += itemLink;
+      const markerItem = document.createElement('div')
+      markerItem.className = 'brand__card';
+      markerItem.innerHTML = marker.info_list;
+      listingEl.innerHTML += markerItem;
     });
 
     mapText.textContent = 'Déplacez sur la carte pour voir les résultats';
