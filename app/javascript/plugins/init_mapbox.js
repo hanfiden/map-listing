@@ -147,7 +147,7 @@ const initMapbox = () => {
       const markerItem = document.createElement('div')
       markerItem.className = 'brand__card';
       markerItem.innerHTML = marker.info_list;
-      listingEl.innerHTML += markerItem;
+      listingEl.appendChild(markerItem);
     });
 
     mapText.textContent = 'Déplacez sur la carte pour voir les résultats';
