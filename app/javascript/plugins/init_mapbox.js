@@ -86,6 +86,7 @@ const initMapbox = () => {
         let features = map.queryRenderedFeatures({ layers: ['markers'] });
         // console.log(features)
         const popup = new mapboxgl.Popup({
+          offset: 25
         });
 
         // Clear any existing listings
@@ -121,7 +122,6 @@ const initMapbox = () => {
             });
 
             itemLink.addEventListener('mouseleave', () => {
-              // Highlight corresponding feature on the map
               popup.remove(map)
             });
           }
@@ -145,10 +145,12 @@ const initMapbox = () => {
       ////////////////// EVENTS ON THE MARKER ////////////////////
       result_marker.getElement().addEventListener('mouseenter', () => {
         result_marker.togglePopup();
+        markerItem.classList.add('active-card')
       });
 
       result_marker.getElement().addEventListener('mouseleave', () => {
         result_marker.togglePopup()
+        markerItem.classList.remove('active-card')
         // popup.remove(map)
       });
 

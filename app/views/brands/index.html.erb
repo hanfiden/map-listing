@@ -8,9 +8,9 @@
     <div>
       <div class="form">
         <%= form_tag brands_path, method: :get do %>
-          <%= select_tag(:category, options_for_select(Brand::CATEGORIES, params[:category]), {prompt: 'Sélectionnez une catégorie'}) %>
+          <%= select_tag(:category, options_for_select(Brand::CATEGORIES, params[:category]), {prompt: 'Toutes les catégories'}) %>
 
-          <%= select_tag(:tags, options_for_select(Brand::TAGS, params[:tags]), {prompt: 'Sélectionnez un tag'}) %>
+          <%= select_tag(:tags, options_for_select(Brand::TAGS, params[:tags]), {prompt: 'Tous les tags'}) %>
 
           <%= text_field_tag(:city_name, params[:city_name], autocomplete: 'off', placeholder: 'Ville') %>
 
