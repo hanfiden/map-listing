@@ -15,11 +15,11 @@
   background-color: white;
   border-radius: 5%;
 	opacity: 0;
-	animation: fadeIn .5s ease-in both;
+	animation: fadeIn .4s ease-in both;
 
   @for $i from 1 through 50 {
     &:nth-child(#{$i}n) {
-        animation-delay: #{$i * 0.3}s;
+        animation-delay: #{$i * 0.2}s;
     }
 }
 
