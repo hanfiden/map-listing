@@ -60,7 +60,8 @@ const initMapbox = () => {
             },
             properties: {
               window: marker.info_window,
-              list: marker.info_list
+              list: marker.info_list,
+              coordinate: [marker.lng, marker.lat]
             }
           }))
       };
@@ -77,12 +78,12 @@ const initMapbox = () => {
         source: "markers",
         paint: {
           'circle-radius': 1,
-          'circle-stroke-width': 1,
+          'circle-stroke-width': 0
         }
       })
 
       map.on('moveend', () => {
-        const features = map.queryRenderedFeatures({ layers: ['markers'] });
+        let features = map.queryRenderedFeatures({ layers: ['markers'] });
         // console.log(features)
         const popup = new mapboxgl.Popup({
         });
@@ -91,10 +92,26 @@ const initMapbox = () => {
         listingEl.innerHTML = '';
 
         if (features.length) {
+          // Get all coord points to calculate the nearest distance between brand and center layer
+          const points = turf.featureCollection(features.map(feature => turf.point(JSON.parse(feature.properties.coordinate))));
+          // console.log(points)
+          const nearest = turf.nearestPoint(turf.point(map.getCenter().toArray()), points);
+          // console.log(nearest.geometry.coordinates)
+          // console.log(features)
+
           for (const feature of features) {
             const itemLink = document.createElement('div')
             itemLink.className = 'brand__card';
             itemLink.innerHTML = feature.properties.list;
+
+            // Check the condition of which feature coord is the same as the nearest coord
+            if (JSON.parse(feature.properties.coordinate)[0] ===  nearest.geometry.coordinates[0]) {
+              // Add on first div when nearest to the center
+              listingEl.prepend(itemLink)
+            } else {
+              listingEl.appendChild(itemLink);
+            }
+
             itemLink.addEventListener('mouseenter', () => {
               // Highlight corresponding feature on the map
               popup
@@ -107,8 +124,6 @@ const initMapbox = () => {
               // Highlight corresponding feature on the map
               popup.remove(map)
             });
-
-            listingEl.appendChild(itemLink);
           }
         }
       });
