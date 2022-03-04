@@ -159,10 +159,23 @@ const initMapbox = () => {
         });
       });
 
+      // Set default markers with ajax
       const markerItem = document.createElement('div')
       markerItem.className = 'brand__card';
       markerItem.innerHTML = marker.info_list;
       listingEl.appendChild(markerItem);
+
+      markerItem.addEventListener('mouseenter', () => {
+        // Highlight corresponding feature on the map
+        popup
+          .setLngLat([marker.lng, marker.lat])
+          .addTo(map);
+      });
+
+      markerItem.addEventListener('mouseleave', () => {
+        // Highlight corresponding feature on the map
+        popup.remove(map)
+      });
     });
 
     mapText.textContent = 'Déplacez sur la carte pour voir les résultats';
