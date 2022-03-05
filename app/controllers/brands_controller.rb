@@ -3,10 +3,10 @@ class BrandsController < ApplicationController
     check_query.present? ? set_search : @brands = Brand.all
     set_markers
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @brands }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @brands }
+    # end
   end
 
   def show
