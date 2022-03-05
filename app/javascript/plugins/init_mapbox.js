@@ -83,14 +83,14 @@ const initMapbox = () => {
       })
 
       map.on('moveend', () => {
-        let features = map.queryRenderedFeatures({ layers: ['markers'] });
+        const features = map.queryRenderedFeatures({ layers: ['markers'] });
+        // Clear any existing listings
+        listingEl.innerHTML = '';
         // console.log(features)
+
         const popup = new mapboxgl.Popup({
           offset: 25
         });
-
-        // Clear any existing listings
-        listingEl.innerHTML = '';
 
         if (features.length) {
           // Get all coord points to calculate the nearest distance between brand and center layer
