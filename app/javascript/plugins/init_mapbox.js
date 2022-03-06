@@ -86,6 +86,8 @@ const initMapbox = () => {
         const features = map.queryRenderedFeatures({ layers: ['markers'] });
         // Clear any existing listings
         listingEl.innerHTML = '';
+        // Scroll to the top each time we move on the map
+        listingEl.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
         // console.log(features)
 
         const popup = new mapboxgl.Popup({
